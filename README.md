@@ -7,7 +7,7 @@ Fredrik Roos 2025.
 ## Prerequisites
 - JDK 17
 - Maven
-- Docker (optional, to run Postgres)
+- Docker
 
 ## Run PostgreSQL with Docker
 ```bash
