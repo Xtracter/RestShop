@@ -8,12 +8,24 @@ Fredrik Roos 2025.
 - JDK 17
 - Maven
 - Docker
-
+- PostgreSQL 17 (If not uing Docker)
 ## Run PostgreSQL with Docker
 ```bash
-docker-compose up -d
+sudo docker-compose up -d
 ```
-## Build and run
+
+## Run App in Docker
+```
+sudo docker build -t restshop-app .
+sudo docker run -p 8080:8080 restshop-app
+```
+
+## Check Docker containers
+```
+sudo docker ps
+```
+
+## Build and run (No Docker)
 ```bash
 ./mvnw spring-boot:run
 ```
