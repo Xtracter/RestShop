@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,6 +20,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SuppressWarnings("unused")
+@Import(TestSecurityConfig.class)
+@AutoConfigureMockMvc
 @WebMvcTest(RESTController.class)
 class RESTControllerTest {
 
@@ -30,6 +34,9 @@ class RESTControllerTest {
     @Autowired
     private MockMvc mock;
 
+    @Autowired
+    private MockMvc mockMvc;
+    
     @Test
     void listRestShops() throws Exception {
         Mockito.when(service.findAll()).thenReturn(List.of(new ShopModel("A", "B")));
